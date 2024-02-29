@@ -1,0 +1,1 @@
+QBCore = exports['qb-core']:GetCoreObject() -- Can be used across both client and server.
