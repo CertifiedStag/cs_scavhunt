@@ -40,6 +40,7 @@ local function scavengerEvent(stage)
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function()
+            if not QBCore.Functions.HasItem(Config.Location[stage].item) then return end
             local continue, newStage = lib.callback.await('stag_hunt:server:updateStage', false, stage)
             if continue and newStage then
                 SetEntityVisible(objs[stage], false)
