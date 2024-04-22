@@ -44,7 +44,7 @@ lib.callback.register('stag_hunt:server:finalStage', function(source)
         return false
     end
 
-    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Locations[progress].itemAdd], 'add')
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.Locations[5].itemAdd], 'add')
 
     Player.Functions.SetMetaData('scav', 0)
     return true

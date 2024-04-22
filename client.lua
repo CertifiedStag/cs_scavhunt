@@ -97,6 +97,7 @@ local function setupScavenger()
                         disableMouse = false,
                         disableCombat = true,
                     }, {}, {}, {}, function()
+                        if not QBCore.Functions.HasItem(Config.StartLocation.item) then return end
                         local continue, newStage = lib.callback.await('stag_hunt:server:updateStage', false)
                         if continue then
                             local coords = Config.Locations[newStage].coords
