@@ -40,7 +40,9 @@ local function scavengerEvent(stage)
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function()
-            if not QBCore.Functions.HasItem(Config.Location[stage].item) then return end
+            if not QBCore.Functions.HasItem(Config.Location[stage].item) then return 
+            QBCore.Functions.Notify('I dont have the tool to open this!', 'error', 1000)
+            end
             local continue, newStage = lib.callback.await('stag_hunt:server:updateStage', false, stage)
             if continue and newStage then
                 SetEntityVisible(objs[stage], false)
@@ -98,7 +100,9 @@ local function setupScavenger()
                         disableMouse = false,
                         disableCombat = true,
                     }, {}, {}, {}, function()
-                        if not QBCore.Functions.HasItem(Config.StartLocation.item) then return end
+                        if not QBCore.Functions.HasItem(Config.StartLocation.item) then return 
+                        QBCore.Functions.Notify('I need something to help read this!', 'error', 1000)
+                        end
                         local continue, newStage = lib.callback.await('stag_hunt:server:updateStage', false)
                         if continue then
                             local coords = Config.Locations[newStage].coords
