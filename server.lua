@@ -56,23 +56,14 @@ end)
 AddEventHandler('onResourceStart', function(resource)
     if resource ~= GetCurrentResourceName() or GetNumPlayerIndices() == 0 then return end
 
-    SetTimeout(0, function()
+    SetTimeout(2000, function()
         TriggerClientEvent('stag_hunt:client:cacheConfig', -1, Config)
     end)
 end)
 
 RegisterNetEvent('QBCore:Server:OnPlayerLoaded', function()
     local src = source
-    SetTimeout(0, function()
+    SetTimeout(2000, function()
         TriggerClientEvent('stag_hunt:client:cacheConfig', src, Config)
     end)
-end)
-
-RegisterCommand('resethunt', function(source)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.SetMetaData('scav', 0)
-    Wait(100)
-    Player.Functions.Save()
-    print("Hunt Data:",Player.PlayerData.metadata.scav)
 end)
